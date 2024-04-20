@@ -1,6 +1,7 @@
 package com.ztc.smart.farmework.helper;
 
 import com.ztc.smart.farmework.annotation.Inject;
+import com.ztc.smart.farmework.util.ArrayUtil;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.slf4j.Logger;
@@ -17,7 +18,7 @@ import java.util.Set;
  * @Author ztc
  * @Date 2024/4/20 16:02
  */
-public class IocHelper {
+public final class IocHelper {
 
     private static Logger LOGGER = LoggerFactory.getLogger(IocHelper.class);
     static {
@@ -32,7 +33,7 @@ public class IocHelper {
                 Object obj = entry.getValue();
                 // 获取 bean 定义的所有成员变量
                 Field[] fields = clz.getDeclaredFields();
-                if(ArrayUtils.isNotEmpty(fields)){
+                if(ArrayUtil.isNotEmpty(fields)){
                     // 遍历所有的成员变量
                     for (Field beanField : fields) {
                         //判断成员变量是否需要依赖注入
@@ -48,7 +49,6 @@ public class IocHelper {
                         }
                     }
                 }
-
             }
         }
 
