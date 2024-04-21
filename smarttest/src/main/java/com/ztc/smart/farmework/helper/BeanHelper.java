@@ -13,7 +13,7 @@ import java.util.Set;
  * @Author ztc
  * @Date 2024/4/20 10:54
  */
-public class BeanHelper {
+public final class BeanHelper {
 
     private static Logger LOGGER = LoggerFactory.getLogger(BeanHelper.class);
     /**
