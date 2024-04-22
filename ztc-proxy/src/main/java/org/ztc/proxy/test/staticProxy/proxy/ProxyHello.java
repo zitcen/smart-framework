@@ -5,7 +5,7 @@ import org.ztc.proxy.test.staticProxy.impl.HelloImpl;
 
 /**
  * @ClassName ProxyHello
- * @Description TODO
+ * @Description 静态代理类
  * @Author ztc
  * @Date 2024/4/23 7:30
  */
