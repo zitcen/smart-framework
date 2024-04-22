@@ -15,7 +15,7 @@ public class HelloController {
 
     @Action("get:/customer")
     public View hello(){
-        System.out.println("1");
-        return new View("/");
+        System.out.println("hello");
+        return new View("/index.jsp");
     }
 }
