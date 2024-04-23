@@ -2,6 +2,8 @@ package org.ztc.proxy.test.dynamicProxy;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
+
 
 /**
  * @ClassName DynamicProxy
@@ -9,11 +11,11 @@ import java.lang.reflect.Method;
  * @Author ztc
  * @Date 2024/4/23 7:40
  */
-public class DynamicProxy implements InvocationHandler {
+public class DynamicProxy<T> implements InvocationHandler {
 
-    private Object target;
+    private T target;
 
-    public DynamicProxy(Object target) {
+    public DynamicProxy(T target) {
         this.target = target;
     }
 
@@ -31,5 +33,9 @@ public class DynamicProxy implements InvocationHandler {
     }
     private void after(){
         System.out.println("After");
+    }
+
+    public T getProxy(){
+        return (T)Proxy.newProxyInstance(target.getClass().getClassLoader(), target.getClass().getInterfaces(), this);
     }
 }

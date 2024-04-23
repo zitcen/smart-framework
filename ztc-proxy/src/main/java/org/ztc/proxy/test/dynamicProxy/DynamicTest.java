@@ -14,12 +14,16 @@ import java.lang.reflect.Proxy;
 public class DynamicTest {
     public static void main(String[] args) {
         Hello hello = new HelloImpl();
-        DynamicProxy proxy = new DynamicProxy(hello);
-        Hello helloProxy = (Hello)Proxy.newProxyInstance(
-                hello.getClass().getClassLoader(),
-                hello.getClass().getInterfaces(),
-                proxy
-        );
-        helloProxy.say("dynamic test");
+        DynamicProxy<Hello> proxy = new DynamicProxy<>(hello);
+        Hello proxyProxy = proxy.getProxy();
+        proxyProxy.say("T");
+//        Hello helloProxy = (Hello)Proxy.newProxyInstance(
+//                hello.getClass().getClassLoader(),
+//                hello.getClass().getInterfaces(),
+//                proxy
+//        );
+//        helloProxy.say("dynamic test");
+
+//        hellopr.say("name");
     }
 }
