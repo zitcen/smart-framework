@@ -1,9 +1,7 @@
 package com.ztc.smart.farmework;
 
-import com.ztc.smart.farmework.helper.BeanHelper;
-import com.ztc.smart.farmework.helper.ClassHelper;
-import com.ztc.smart.farmework.helper.ControllerHelper;
-import com.ztc.smart.farmework.helper.IocHelper;
+import com.ztc.smart.farmework.helper.*;
+import com.ztc.smart.farmework.util.ClassUtil;
 
 /**
  * @ClassName 初始化框架
@@ -17,7 +15,11 @@ public class HelperLoader {
                 ClassHelper.class,
                 BeanHelper.class,
                 IocHelper.class,
-                ControllerHelper.class
+                ControllerHelper.class,
+                AopHelper.class
         };
+        for (Class<?> clz : classList) {
+            ClassUtil.loadClass(clz.getName(), true);
+        }
     }
 }

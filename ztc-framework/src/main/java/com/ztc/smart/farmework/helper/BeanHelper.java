@@ -55,4 +55,16 @@ public final class BeanHelper {
         }
         return (T)BEAN_MAP.get(clz);
     }
+
+    /***
+     * @Author ztc
+     * @Description 设置 Bean 实例
+     * @Date 2024/4/25
+     * @param clz
+     * @param obj
+     *
+    **/
+    public static void setBean(Class<?> clz,Object obj) {
+        BEAN_MAP.put(clz,obj);
+    }
 }

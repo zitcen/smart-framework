@@ -4,6 +4,7 @@ import com.ztc.smart.farmework.annotation.Controller;
 import com.ztc.smart.farmework.annotation.Service;
 import com.ztc.smart.farmework.util.ClassUtil;
 
+import java.lang.annotation.Annotation;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -78,5 +79,41 @@ public final class ClassHelper {
         beanClass.addAll(getControllerClass());
         beanClass.addAll(getServiceClass());
         return beanClass;
+    }
+
+    /***
+     * @Author ztc
+     * @Description 获取应用包名下某父类或者接口的所有子类
+     * @Date 2024/4/25  
+     * @param superClass 
+     * @return java.util.Set<java.lang.Class<?>>
+     * 
+    **/
+    public static Set<Class<?>> getClassSetBuySuper(Class<?> superClass){
+        HashSet<Class<?>> classSet = new HashSet<>();
+        for (Class<?> clz : CLASS_SET) {
+            if(superClass.isAssignableFrom(clz) && !superClass.equals(clz)){
+                classSet.add(clz);
+            }
+        }
+        return classSet;
+    }
+    
+    /***
+     * @Author ztc
+     * @Description 获取应用包名下带有某注解的所有类
+     * @Date 2024/4/25
+     * @param annotation
+     * @return java.util.Set<java.lang.Class<?>>
+     * 
+    **/
+    public static Set<Class<?>> getClassSetBuyAnnotation(Class<? extends Annotation> annotation){
+        HashSet<Class<?>> classSet = new HashSet<>();
+        for (Class<?> clz : CLASS_SET) {
+            if (clz.isAnnotationPresent(annotation)) {
+                classSet.add(clz);
+            }
+        }
+        return classSet;
     }
 }
