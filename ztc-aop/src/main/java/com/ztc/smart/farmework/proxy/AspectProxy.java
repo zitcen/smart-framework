@@ -14,6 +14,7 @@ import java.lang.reflect.Method;
 public abstract class AspectProxy implements Proxy{
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AspectProxy.class);
+
     @Override
     public Object doProxy(ProxyChain proxyChain) throws Throwable {
         Object result = null;
