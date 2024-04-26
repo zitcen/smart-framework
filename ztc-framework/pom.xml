@@ -84,9 +84,9 @@
         </dependency>
 
         <dependency>
-            <groupId>org.ztc</groupId>
-            <artifactId>ztc-aop</artifactId>
-            <version>1.0.0.SNAPSHOT</version>
+            <groupId>cglib</groupId>
+            <artifactId>cglib</artifactId>
+            <version>3.3.0</version>
         </dependency>
     </dependencies>
 
