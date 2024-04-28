@@ -18,7 +18,7 @@ import java.util.Set;
  */
 public final class ClassUtil {
     private static final Logger LOGGER = LoggerFactory.getLogger(CastUtil.class);
-
+    private static HashSet<Class<?>> classSet = new HashSet<>();
     /***
      * @Author ztc
      * @Description 获取类加载器
@@ -44,7 +44,7 @@ public final class ClassUtil {
         try {
             clz = Class.forName(className, isInitialized, getClassLoader());
         } catch (ClassNotFoundException e) {
-            LOGGER.error("load class failue", e);
+            LOGGER.error("load class failure", e);
             throw new RuntimeException(e);
         }
         return clz;
@@ -59,7 +59,7 @@ public final class ClassUtil {
      *
     **/
     public static Set<Class<?>> getClassSet(String packageName) {
-        HashSet<Class<?>> classSet = new HashSet<>();
+
         URL url = getClassLoader().getResource(packageName.replace(".", "/"));
         File classDir = new File(url.getFile());
         File[] files = classDir.listFiles();
@@ -71,7 +71,9 @@ public final class ClassUtil {
                     continue;
                 }else{
                     String clazzName = (packageName + "." + file.getName().substring(0,file.getName().indexOf(".")));
+                    Class<?> clz = loadClass(clazzName, false);
                     doAddClass(classSet,clazzName);
+//                    classSet.add(clz);
                 }
             }
         }

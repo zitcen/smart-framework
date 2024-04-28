@@ -17,6 +17,7 @@ public class HelperLoader {
                 IocHelper.class,
                 ControllerHelper.class,
                 AopHelper.class
+//                , DatabaseHelper.class
         };
         for (Class<?> clz : classList) {
             ClassUtil.loadClass(clz.getName(), true);

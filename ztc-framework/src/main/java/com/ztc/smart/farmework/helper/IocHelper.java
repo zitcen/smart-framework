@@ -38,7 +38,7 @@ public final class IocHelper {
                     for (Field beanField : fields) {
                         //判断成员变量是否需要依赖注入
                         if (beanField.isAnnotationPresent(Inject.class)) {
-                            Class<? extends Field> fieldClass = beanField.getClass();
+                            Class<?> fieldClass = beanField.getType();
                             //在beanMap中获取对应的实例,并对成员变量赋值
                             Object beanFieldInstance = beanMap.get(fieldClass);
                             if(!Objects.isNull(beanFieldInstance)){

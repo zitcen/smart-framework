@@ -33,7 +33,7 @@ public class CustomerService {
 
         String sql = "select * from customer;";
 
-        List<Customer> customers = DatabaseHelper.queryEntityList( Customer.class, sql);
+        List<Customer> customers = DatabaseHelper.queryEntityList(Customer.class, sql);
         return customers;
     }
 

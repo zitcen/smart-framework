@@ -23,7 +23,7 @@ import java.util.*;
  * @Author ztc
  * @Date 2024/4/16 16:59
  */
-public class DatabaseHelper {
+public final class DatabaseHelper {
     private static final Logger LOGGER = LoggerFactory.getLogger(DatabaseHelper.class);
     private static final String DRIVER;
     private static final String URL;
@@ -41,11 +41,11 @@ public class DatabaseHelper {
     static {
         CONNECTION_HOLDER = new ThreadLocal<Connection>();
         QUERY_RUNNER = new QueryRunner();
-        Properties props = PropsUtil.loadProps("jdbcConfig.properties");
-        DRIVER = props.getProperty("jdbc.driver");
-        URL = props.getProperty("jdbc.url");
-        USERNAME = props.getProperty("jdbc.username");
-        PASSWORD = props.getProperty("jdbc.password");
+        Properties props = PropsUtil.loadProps("smart.properties");
+        DRIVER = props.getProperty("ztc.framework.jdbc.driver");
+        URL = props.getProperty("ztc.framework.jdbc.url");
+        USERNAME = props.getProperty("ztc.framework.jdbc.username");
+        PASSWORD = props.getProperty("ztc.framework.jdbc.password");
         DATA_SOURCE = new BasicDataSource();
         DATA_SOURCE.setDriverClassName(DRIVER);
         DATA_SOURCE.setUrl(URL);

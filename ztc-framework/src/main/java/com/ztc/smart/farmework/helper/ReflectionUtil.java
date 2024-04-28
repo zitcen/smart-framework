@@ -66,7 +66,7 @@ public final class ReflectionUtil {
      *
     **/
     public static void setField(Object obj, Field field, Object value){
-        field.setAccessible(false);
+        field.setAccessible(true);
         try {
             field.set(obj,value);
         } catch (IllegalAccessException e) {
